@@ -67,18 +67,24 @@ function turnArryToInt(arr) {
   return arr;
 }
 
-var startVal = Math.pow(2, 50) + '';
-for (var i = 0; i < 19; i++) {
-  startVal = multiplyBigInts(startVal, Math.pow(2, 50) + '');
+function main() {
+  var arbitraryStartExp = 50;
+  var goalExp = 1000;
+  var remainingExp = goalExp/arbitraryStartExp;
+  var startVal = Math.pow(2, 50) + '';
+
+  // Subtract 1 because we already started with that value
+  for (var i = 0; i < remainingExp - 1; i++) {
+    startVal = multiplyBigInts(startVal, Math.pow(2, 50) + '');
+  }
+
+  startValArr = startVal.split('');
+  var result = 0;
+
+  for (var j = 0; j < startValArr.length; j++) {
+    result += parseInt(startValArr[j], 10);
+  }
+
+  return result;
 }
-
-console.log(startVal);
-
-startValArr = startVal.split('');
-var result = 0;
-
-for (var j = 0; j < startValArr.length; j++) {
-  result += parseInt(startValArr[j], 10);
-}
-
-console.log(result);
+console.log(main());
