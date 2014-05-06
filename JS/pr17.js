@@ -11,48 +11,41 @@ function main() {
   var divisor = 0;
 
   for (var i = 1; i <= 1000; i++) {
-    console.log(i);
     divisor = i >= 100 && i < 1000 ? 100 : 1000 ;
 
-    switch(true) {
-      case i < 100:
-        break;
-      // always put the prefix to hundreds or thousands
-      case true:
-        currentWord.unshift(ones[Math.floor(i/divisor)]);
-      case i >= 100 && i < 1000:
-        currentWord.push(large[0]);
-        break;
-      case i >= 1000:
-        currentWord.push(large[1]);
-        break;
+    if (i >= 100) {
+      currentWord.unshift(ones[Math.floor(i/divisor)]);
     }
 
+    if (i >= 100 && i < 1000) {
+      currentWord.push(large[0]);
+    } else if (i >= 1000) {
+      currentWord.push(large[1]);
+    }
 
     smallerN = i % 100;
-    switch(true) {
-      case currentWord.length > 0 && smallerN > 0:
-        currentWord.push('and');
-      case smallerN < 10:
-        currentWord.push(ones[smallerN]);
-        break;
-      case smallerN >= 10 && smallerN < 20:
-        currentWord.push(teens[smallerN - 9]);
-        break;
-      // multiples of ten
-      case smallerN >= 20 && smallerN % 10 === 0:
-        currentWord.push(tens[Math.floor(smallerN/10)]);
-        break;
-      case smallerN >= 20 && smallerN % 10 > 0:
-        currentWord.push(tens[Math.floor(smallerN/10)]);
-        currentWord.push(ones[smallerN % 10]);
-        break;
+
+    if (currentWord.length > 0 && smallerN > 0) {
+      currentWord.push('and');
     }
 
-    console.log(currentWord.join(''));
+    if (smallerN < 10) {
+      currentWord.push(ones[smallerN]);
+    } else if (smallerN >= 10 && smallerN < 20) {
+      currentWord.push(teens[smallerN - 9]);
+    } else if (smallerN >= 20 && smallerN % 10 === 0) {
+      currentWord.push(tens[Math.floor(smallerN/10)]);
+    } else if (smallerN >= 20 && smallerN % 10 > 0) {
+      currentWord.push(tens[Math.floor(smallerN/10)]);
+      currentWord.push(ones[smallerN % 10]);
+    }
+
     numWordsToThousand.push(currentWord.join(''));
     currentWord = []
   }
+
+  var result = numWordsToThousand.join('').length;
+  console.log(result);
 }
 
 main();
