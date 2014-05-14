@@ -40,7 +40,7 @@ function sumTwoArrs(arr1, arr2) {
 
   for (var i = 0; i < max; i++) {
     position = max - (i + 1);
-    sumArr[position] = (arr1[i] || 0) + (arr2[i] || 0) + overflow;
+    sumArr[position] = (arr1ReverseCopy[i] || 0) + (arr2ReverseCopy[i] || 0) + overflow;
     if (sumArr[position] > 9) {
       sumArr[position] -= 10;
       overflow = 1;
