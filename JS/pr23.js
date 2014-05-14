@@ -2,7 +2,8 @@ function main() {
   var abundantIntegerLimit = 28123,
       total = 0,
       allAbundantNs = [],
-      sums = [];
+      sums = [],
+      sum = 0;
 
   for (var i = 1; i <= abundantIntegerLimit; i++) {
     if (isAbundant(i) === true) {
@@ -12,11 +13,13 @@ function main() {
 
   for (var j = 0; j < allAbundantNs.length; j++) {
     for (var k = 0; k < allAbundantNs.length; k++) {
-      sums[allAbundantNs[j] + allAbundantNs[k]] = true;
+      sum = allAbundantNs[j] + allAbundantNs[k];
+      if (sum > abundantIntegerLimit) { break; }
+      sums[sum] = true;
     }
   }
 
-  for (var l = 1; l <= 28123; l++) {
+  for (var l = 1; l <= abundantIntegerLimit; l++) {
     if (!sums[l]) { total += l; }
   }
 
