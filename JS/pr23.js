@@ -27,9 +27,6 @@ function main() {
   return total;
 }
 
-function sumOfTwoAbundantN(n) {
-}
-
 function isAbundant(n) {
   var allNDivisors = getAllDivisors(n),
       divisorSum = sumArray(allNDivisors);
