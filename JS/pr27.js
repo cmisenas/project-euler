@@ -102,14 +102,4 @@ function isPrime(num) {
   return true;
 }
 
-function removeDuplicates(arr) {
-  var uniqueArr = new Array();
-  arr.sort();
-  for(i=0; i < arr.length; i++){
-    if(arr[i] == arr[i+1]) { continue; }
-    uniqueArr[uniqueArr.length] = arr[i];
-  }
-  return uniqueArr;
-}
-
 main();
