@@ -1,3 +1,6 @@
+# input files are ignored
+*.txt
+
 *.swp
 *.swo
 
